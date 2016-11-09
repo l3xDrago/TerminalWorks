@@ -1,0 +1,42 @@
+# ZSH Path
+#-------------------------#
+export ZSH=$HOME/.oh-my-zsh
+
+# PATH
+#-------------------------#
+export PATH=$PATH:"/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:"
+export PATH=$PATH:"$HOME/scripts"
+
+# SSH
+#-------------------------#
+export SSH_KEY_PATH=$SSH_KEY_PATH:"~/.ssh"
+
+# THEME ~/.oh-my-zsh/themes/
+#-------------------------#
+ZSH_THEME="nanotech"
+
+# User Interface
+#-------------------------#
+COMPLETION_WAITING_DOTS="true"
+
+# PLUGINS ~/.oh-my-zsh/plugins/*
+#-------------------------#
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+cdf() {
+	target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
+	if [ "$target" != "" ]; then
+		cd "$target"; pwd
+	else
+		echo 'No Finder window found' >&2
+	fi
+}
+
+
+# ALIASES
+#-------------------------#
+
+alias docs='atom ~/Dropbox/Documents/Markdown/'
+alias proj='cd ~/Documents/Projects/'
