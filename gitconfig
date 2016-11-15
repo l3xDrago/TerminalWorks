@@ -1,12 +1,24 @@
 [core]
-	excludesfile = /Users/admin/.gitignore_global
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+	excludesfile = ~/.gitignore_global
+	editor = atom --wait
+
+[merge]
+	tool = opendiff
+
 [alias]
-lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-lg = !"git lg1"
+	# // https://opensource.apple.com/source/Git/Git-19/src/git-htmldocs/pretty-formats.txt
+	lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%<(40,trunc)%s%C(reset) %C(dim white)- %<(10,trunc)%cN%C(reset)%C(bold yellow)%d%C(reset)' --all
+
+	logx = log --all --graph --decorate=short --color --format=format:'%C(dim bold blue)%h%C(reset)+%C(dim white)(%cr)%C(reset)+%C(auto)%d%C(reset)++\n+++       %C(bold white)%cN%C(reset)%C(white): %<(50,trunc)%s%C(reset)' -20
+	vtree = !bash -c '"                                                                             \
+	    while IFS=+ read -r hash time branch message; do                                            \
+	        timelength=$(echo \"$time\" | sed -E \"s:[^ ][[]([0-9]{1,2}(;[0-9]{1,2})?)?m::g\");     \
+	        timelength=$(echo \"16+${#time}-${#timelength}\" | bc);                                 \
+	        printf \"%${timelength}s    %s %s %s\n\" \"$time\" \"$hash\" \"$branch\" \"$message\";  \
+	    done < <(git logx && echo);"'
+
+	# show all committers and the number of commits
+	committers = shortlog -nse --no-merges
+
+[mailmap]
+  file = ~/.mailmap
