@@ -2,6 +2,9 @@
 	excludesfile = ~/.gitignore_global
 	editor = atom --wait
 
+[diff]
+	tool = opendiff
+
 [merge]
 	tool = opendiff
 
