@@ -168,16 +168,14 @@ This is okay if you do not have any local merge commits.
 ## --no-ff creates the structure below that keeps track of where the commits come from
 
 ``` 
-[Not preferred]: $ git merge master feature
---(A) −− (B)−−−−−−− (E) −− (F) −−−(C) − (D)----   (master)
-```
-The history is lost, the branch never existed, sadness spreads all around space time.
-
-``` 
 [Preferred]: $ git merge --no-ff master feature                                         
 --(A) −− (B)−−−−−−− (E) −− (F) −−−------------------(H Merge message)---   (master)
                                 \                  /                      
                                  +--- (C) − (D) --                         (feature)  
 ```
 
-
+``` 
+[Not preferred]: $ git merge master feature
+--(A) −− (B)−−−−−−− (E) −− (F) −−−(C) − (D)----   (master)
+```
+The history is lost, the branch never existed, sadness spreads all around space time.
