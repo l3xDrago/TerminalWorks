@@ -5,7 +5,8 @@ export ZSH=$HOME/.oh-my-zsh
 # PATH
 #-------------------------#
 export PATH=$PATH:"/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:"
-export PATH=$PATH:"$HOME/scripts"
+export PATH=$PATH:"$HOME/scripts:"
+export PATH=$PATH:"/opt/local/bin:/opt/local/sbin"
 
 # SSH
 #-------------------------#
@@ -36,7 +37,7 @@ cdf() {
 
 # ALIASES
 #-------------------------#
-alias docs='atom ~/Dropbox/Documents/Markdown/'
+alias docs='code ~/Dropbox/Documents/Markdown/'
 alias proj='cd ~/Documents/Projects/'
 alias gitlog='watch -c git vtree'  # requires watch to be installed on the system
 alias colors='for x in 0 1 4 5 7 8; do for i in `seq 30 37`; do for a in `seq 40 47`; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo "";'
