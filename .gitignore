@@ -1,63 +1,90 @@
-# Xcode
-#
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+#####
+# OS X temporary files that should never be committed
+.DS_Store
+*.swp
+# *.lock
+profile
 
-## Build generated
-build/
-DerivedData
+####
+# Xcode temporary files that should never be committed
+*~.nib
 
-## Various settings
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-xcuserdata
-
-## Other
-*.xccheckout
-*.moved-aside
-*.xcuserstate
-*.xcscmblueprint
-
-## Obj-C/Swift specific
+####
+# Objective-C/Swift specific
 *.hmap
 *.ipa
 
-## Playgrounds
-timeline.xctimeline
-playground.xcworkspace
+####
+# Xcode build files
+DerivedData/
+build/
+Builds/
 
-# Swift Package Manager
-#
-# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-# Packages/
-.build/
+#####
+# Xcode private settings (window sizes, bookmarks, breakpoints, custom executables, smart groups)
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
 
+####
+# Xcode 4
+xcuserdata
+!xcschemes
+# Xcode 4
+*.moved-aside
+
+####
+# XCode 4 workspaces - more detailed
+!xcshareddata
+!default.xcworkspace
+# *.xcworkspacedata
+
+
+####
+# Xcode 5
+*.xccheckout
+*.xcuserstate
+
+####
+# Xcode 7
+*.xcscmblueprint
+
+####
+# AppCode
+.idea/
+
+####
+# Other Xcode files
+profile
+*.hmap
+*.ipa
+
+####
 # CocoaPods
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-# Pods/
+Pods/
 
+####
 # Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
-
 Carthage/Build
 
-# fastlane
-#
-# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the 
-# screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://github.com/fastlane/fastlane/blob/master/docs/Gitignore.md
-
+###
+# FastLane
 fastlane/report.xml
-fastlane/screenshots
+fastlane/test_output/
+VOMobileUITests/Info.plist
+VOMobileTests/Info.plist
+VOMobile.app.dSYM.zip
+
+# binary package manager
+scripts/gcp-distribution/build-artifacts
+scripts/gcp-distribution/distribution-package
+SDKs/*/package
+SDKs/*/*.framework
+
+# Localization Errors
+localization-result.log
